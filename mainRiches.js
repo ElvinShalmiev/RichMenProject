@@ -70,7 +70,7 @@ const richCards = richMens.map((p) => {
                 </div>`
 
     myDiv.addEventListener('click', () => {
-        let newlist = richMens.filter((e) => e.id !== myDiv.id)
+        richMens.filter((e) => e.id !== myDiv.id)
         myContent.removeChild(myDiv)
     })
     myContent.appendChild(myDiv)
