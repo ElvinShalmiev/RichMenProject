@@ -51,10 +51,13 @@ let richMens = [
 ]
 
 const myContent = document.querySelector(".myContent")
-
-const richCards = richMens.map((p)=>{
-    return `<div class="col">
-            <div class="card d-flex p-3 m-2"  style="width: 18rem">
+let count = 0
+const richCards = richMens.map((p) => {
+    const myDiv = document.createElement('div')
+    myDiv.classList.add('col')
+    myDiv.id = count++
+    p.id = count
+    myDiv.innerHTML = `<div class="card d-flex p-3 m-2"  style="width: 18rem">
                 <img class="card-img-top" src=${p.image}
                  alt="Card image cap">
                 <div class="card-body ">
@@ -64,16 +67,21 @@ const richCards = richMens.map((p)=>{
                       <p class="card-text text-center">Source: ${p.source}</p>
                        <p class="card-text text-center">Country: ${p.country}</p>
                    
-                </div>
-            </div>
-        </div>`
+                </div>`
 
-
-       
+    myDiv.addEventListener('click', () => {
+        let newlist = richMens.filter((e) => e.id !== myDiv.id)
+        myContent.removeChild(myDiv)
     })
-    myContent.innerHTML=richCards
+    myContent.appendChild(myDiv)
 
-myContent.appendChild("richCard")
+
+
+})
+
+
+
+
 
 
 
